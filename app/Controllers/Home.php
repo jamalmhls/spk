@@ -9,8 +9,8 @@ class Home extends BaseController
 		return view('home');
 	}
 
-	function login()
+	function error()
 	{
-		return view('auth/login');
+		return view('errors/404');
 	}
 }

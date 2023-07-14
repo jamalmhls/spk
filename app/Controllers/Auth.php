@@ -2,10 +2,17 @@
 
 namespace App\Controllers;
 
-class Auth extends BaseController
+use CodeIgniter\Shield\Controllers\LoginController;
+
+class Auth extends LoginController
 {
-  function index()
+  function loginView()
   {
     return view('auth/login');
   }
+
+  // function index()
+  // {
+  //   return view('auth/login');
+  // }
 }
