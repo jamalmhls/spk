@@ -32,6 +32,8 @@ $routes->set404Override();
 $routes->get('/', 'Home::index');
 $routes->get('/404', 'Home::error');
 
+$routes->get('/login', 'Auth::index');
+
 service('auth')->routes($routes);
 
 /*
