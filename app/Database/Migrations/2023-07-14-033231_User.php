@@ -8,8 +8,13 @@ class User extends Migration
 {
   public function up()
   {
-    $this->forge->dropColumn('users', ['username', 'status', 'status_message', 'active', 'last_active']);
+    $this->forge->dropColumn('users', ['id', 'username', 'status', 'status_message', 'active', 'last_active']);
     $this->forge->addColumn('users', [
+      'id' => [
+        'type' => 'VARCHAR',
+        'constraint' => 60,
+        'primary' => true
+      ],
       'name' => [
         'type' => 'VARCHAR',
         'constraint' => 60,
