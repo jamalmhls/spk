@@ -8,36 +8,40 @@ class User extends Migration
 {
   public function up()
   {
-    $this->forge->addField([
+    $this->forge->dropColumn('users', ['id', 'username', 'status', 'status_message', 'active', 'last_active']);
+    $this->forge->addColumn('users', [
       'id' => [
         'type' => 'VARCHAR',
-        'constraint' => 50,
+        'constraint' => 60,
+        'primary' => true
       ],
       'name' => [
         'type' => 'VARCHAR',
-        'constraint' => 60
+        'constraint' => 60,
+        'after' => 'id'
       ],
       'email' => [
         'type' => 'VARCHAR',
         'constraint' => 100,
-        'unique' => true
+        'unique' => true,
+        'after' => 'name'
       ],
       'password' => [
         'type' => 'VARCHAR',
-        'constraint' => 255
+        'constraint' => 255,
+        'after' => 'email',
       ],
       'role' => [
         'type' => 'ENUM',
         'constraint' => ['admin', 'kepsek', 'bk', 'hubin', 'koordinator', 'siswa'],
-        'default' => 'siswa'
+        'default' => 'siswa',
+        'after' => 'password'
       ]
     ]);
-    $this->forge->addKey('id', true, true);
-    $this->forge->createTable('users');
   }
 
   public function down()
   {
-    $this->forge->dropTable('users');
+    $this->forge->dropColumn('users', ['name', 'email', 'password', 'role']);
   }
 }

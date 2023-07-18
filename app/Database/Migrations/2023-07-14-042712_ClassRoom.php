@@ -3,8 +3,9 @@
 namespace App\Database\Migrations;
 
 use CodeIgniter\Database\Migration;
+use CodeIgniter\Database\RawSql;
 
-class Major extends Migration
+class ClassRoom extends Migration
 {
   public function up()
   {
@@ -13,11 +14,11 @@ class Major extends Migration
       'name' => ['type' => 'VARCHAR', 'constraint' => 255]
     ]);
     $this->forge->addPrimaryKey('id');
-    $this->forge->createTable('majors');
+    $this->forge->createTable('classes');
   }
 
   public function down()
   {
-    $this->forge->dropTable('majors');
+    $this->forge->dropTable('classes');
   }
 }
